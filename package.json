@@ -1,0 +1,30 @@
+{
+  "name": "atbot-irc",
+  "version": "0.0.0",
+  "description": "atbot",
+  "main": "atbot.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node atbot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "bot",
+    "atbot",
+    "irc",
+    "@bot",
+    "@"
+  ],
+  "author": "William Wennerström <willeponken>",
+  "license": "GPL",
+  "dependencies": {
+    "debug": "^2.0.0",
+    "irc": "^0.3.7"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.5"
+  }
+}

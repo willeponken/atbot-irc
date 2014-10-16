@@ -1,0 +1,26 @@
+## .gitignore ##
+
+# NODE & MODULES #
+node_modules
+bower_components
+logs
+*.log
+pids
+*.pid
+*.seed
+lib-cov
+coverage
+.grunt
+.lock-wscript
+
+# VIM #
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+.elasticbeanstalk/
+
+# CONFIG #
+/config.js
