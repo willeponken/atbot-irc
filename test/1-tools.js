@@ -3,7 +3,7 @@ var assert = require('assert'),
     fs = require('fs');
 
 describe('tools', function() {
-  
+ 
   before(function(done) {
     fs.rename(__dirname + '/../config.js', __dirname + '/../config.js-b', function(err) {
       if (err) {
@@ -44,6 +44,25 @@ describe('tools', function() {
       assert.equal(result, true);
       
       result = tools.searchCmd(searchString, errorString);
+      assert.equal(typeof result, 'boolean');
+      assert.equal(result, false);
+    
+      done();  
+
+    });
+  });
+  
+  describe('.searchWord(search, string)', function() {
+    it('should search case-insesitive in string and return true if exists else return false', function(done) {
+      var searchString = 'BaR zOo bAZ',
+          exampleString = 'bAr',
+          errorString = 'foO';
+
+      var result = tools.searchWord(searchString, exampleString);
+      assert.equal(typeof result, 'boolean');
+      assert.equal(result, true);
+      
+      result = tools.searchWord(searchString, errorString);
       assert.equal(typeof result, 'boolean');
       assert.equal(result, false);
     

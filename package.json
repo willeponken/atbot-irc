@@ -21,7 +21,9 @@
   "author": "William Wennerström <willeponken>",
   "license": "GPL",
   "dependencies": {
+    "cleverbot-node": "^0.1.8",
     "debug": "^2.0.0",
+    "ent": "^2.0.0",
     "irc": "^0.3.7"
   },
   "devDependencies": {

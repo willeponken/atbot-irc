@@ -1,7 +1,9 @@
 var irc = require('irc'),
     config = require(__dirname + '/config'),
     debug  = require('debug')('atbot'),
+    util = require('util'),
     tools = require(__dirname + '/lib/tools'),
+    plugins;
     loadPlugins = require(__dirname + '/lib/plugins');
 
 function toMe(message) {
@@ -26,11 +28,12 @@ var bot = new irc.Client(config.server, config.name, {
 /*
  * PLUGINS
  */
-loadPlugins(bot, config.pluginDir, function(err, plugins) {
+loadPlugins(bot, config.pluginDir, function(err, pluginList) {
   if (err) {
     return debug('loadPlugins', 'err:', err);
   } else {
-    return debug('loadPlugins', 'plugins:', plugins.length);
+    plugins = pluginList; // Save plugins to plugins variable
+    return debug('loadPlugins', 'plugins:', pluginList.length);
   }
 });
 
@@ -39,7 +42,7 @@ loadPlugins(bot, config.pluginDir, function(err, plugins) {
  */
 bot.addListener('join', function(channel, user) {
   debug('join', user, 'joined.');
-  bot.emit('atbot:join', user);
+  bot.emit('atbot:join', user, channel);
 });
 
 bot.addListener('error', function(err) {
@@ -53,7 +56,9 @@ bot.addListener('message', function(from, to, message) {
     respondMsg({
       user: from,
       channel: to,
-      message: message
+      message: message,
+      plugins: plugins,
+      config: config
     });
     return;
   }
