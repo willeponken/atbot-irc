@@ -49,7 +49,7 @@ bot.addListener('error', function(err) {
   bot.emit('atbot:error', err);
 });
 
-bot.addListener('message', function(from, to, message) {
+bot.addListener('message', function(from, to, message, raw) {
   debug('message', from, to, message);
   if (toMe(message)) {
     respondMsg({
@@ -57,7 +57,8 @@ bot.addListener('message', function(from, to, message) {
       channel: to,
       message: message,
       plugins: plugins,
-      config: config
+      config: config,
+      raw: raw
     });
     return;
   }

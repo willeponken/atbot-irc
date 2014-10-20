@@ -37,6 +37,28 @@ describe('tools', function() {
       assert.equal(result, false);
     });
   });
+  
+  describe('.humanizeString(string)', function() {
+    it('should return a trimed and cleaned string from whitespaces and a letter which is uppercase', function() {
+      var exampleString = ' bar  foo   baz     ';
+
+      var result = tools.humanizeString(exampleString);
+      assert.equal(typeof result, 'string');
+      assert.equal(result, 'Bar foo baz');
+    });
+  });
+  
+  describe('.getArgs(string)', function() {
+    it('should return array with arguments', function() {
+      var exampleString = ' bar  foo   baz     ';
+
+      var result = tools.getArgs(exampleString);
+      assert.equal(typeof result, 'object');
+      assert.equal(result[0],'bar');
+      assert.equal(result[1],'foo');
+      assert.equal(result[2],'baz');
+    });
+  });
  
   describe('.cleanString(string)', function() {
     it('should return a trimed and cleaned string from whitespaces', function() {

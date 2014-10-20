@@ -21,10 +21,19 @@
   "author": "William Wennerström <willeponken>",
   "license": "GPL",
   "dependencies": {
+    "bl": "^0.9.3",
+    "caseless": "^0.6.0",
     "cleverbot-node": "^0.1.8",
     "debug": "^2.0.0",
     "ent": "^2.0.0",
-    "irc": "^0.3.7"
+    "forever-agent": "^0.5.2",
+    "irc": "^0.3.7",
+    "json-stringify-safe": "^5.0.0",
+    "mime-types": "^2.0.2",
+    "node-uuid": "^1.4.1",
+    "qs": "^2.2.4",
+    "request": "^2.45.0",
+    "tunnel-agent": "^0.4.0"
   },
   "devDependencies": {
     "mocha": "^1.21.5"
