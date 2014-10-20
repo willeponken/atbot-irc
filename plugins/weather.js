@@ -15,8 +15,7 @@ var weather = {
      
 
       if(tools.searchCmd(info.message, weather.command)) {
-        var args = tools.getArgs(info.message),
-            weatherLocation = args[1];
+        var weatherLocation = tools.remCmd(info.config.resStr + weather.command, info.message);
 
         debug('Weather request', weatherLocation);
         request('http://api.openweathermap.org/data/2.5/weather?q=' + weatherLocation, function (error, response, body) {
