@@ -2,7 +2,6 @@ var irc = require('irc'),
     config = require(__dirname + '/config'),
     debug  = require('debug')('atbot'),
     util = require('util'),
-    tools = require(__dirname + '/lib/tools'),
     plugins;
     loadPlugins = require(__dirname + '/lib/plugins');
 

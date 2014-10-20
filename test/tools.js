@@ -7,7 +7,7 @@ var assert = require('assert'),
 describe('tools', function() {
   
   describe('.searchCmd(search, string)', function() {
-    it('should return true if string exists in beggining of search string else return false', function(done) {
+    it('should return true if string exists in beggining of search string else return false', function() {
       var searchString = '@bar foo baz',
           exampleString = 'bar',
           errorString = 'foo';
@@ -19,14 +19,11 @@ describe('tools', function() {
       result = tools.searchCmd(searchString, errorString);
       assert.equal(typeof result, 'boolean');
       assert.equal(result, false);
-    
-      done();  
-
     });
   });
   
   describe('.searchWord(search, string)', function() {
-    it('should search case-insesitive in string and return true if exists else return false', function(done) {
+    it('should search case-insesitive in string and return true if exists else return false', function() {
       var searchString = 'BaR zOo bAZ',
           exampleString = 'bAr',
           errorString = 'foO';
@@ -38,9 +35,27 @@ describe('tools', function() {
       result = tools.searchWord(searchString, errorString);
       assert.equal(typeof result, 'boolean');
       assert.equal(result, false);
-    
-      done();  
+    });
+  });
+ 
+  describe('.cleanString(string)', function() {
+    it('should return a trimed and cleaned string from whitespaces', function() {
+      var exampleString = ' bar  foo   baz     ';
 
+      var result = tools.cleanString(exampleString);
+      assert.equal(typeof result, 'string');
+      assert.equal(result, 'bar foo baz');
+    });
+  });
+
+  describe('.remCmd(cmd, string)', function() {
+    it('should return a string with the "cmd" string removed', function() {
+      var exampleString = 'bar foo baz',
+          cmdString = 'bar';
+
+      var result = tools.remCmd(cmdString, exampleString);
+      assert.equal(typeof result, 'string');
+      assert.equal(result, 'foo baz');
     });
   });
 });

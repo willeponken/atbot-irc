@@ -1,7 +1,8 @@
 var Cleverbot = require('cleverbot-node'),
     CBot = new Cleverbot,
     debug = require('debug')('atbot:plugin:hello'),
-    tools = require(__dirname + '/../lib/tools'),
+    Tools = require(__dirname + '/../lib/tools'),
+    tools = new Tools(),
     ent = require('ent');
 
 cleverbot = {

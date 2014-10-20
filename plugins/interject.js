@@ -1,5 +1,6 @@
 var debug = require('debug')('atbot:plugin:hello'),
-    tools = require(__dirname + '/../lib/tools');
+    Tools = require(__dirname + '/../lib/tools'),
+    tools = new Tools();
 
 interject = {
   name: 'interject',

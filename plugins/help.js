@@ -1,5 +1,6 @@
 var debug = require('debug')('atbot:plugin:help'),
-    tools = require(__dirname + '/../lib/tools');
+    Tools = require(__dirname + '/../lib/tools'),
+    tools = new Tools();
 
 help = {
   name: 'help',
