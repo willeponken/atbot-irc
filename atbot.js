@@ -2,7 +2,7 @@ var irc = require('irc'),
     config = require(__dirname + '/config'),
     debug  = require('debug')('atbot'),
     util = require('util'),
-    plugins;
+    plugins,
     loadPlugins = require(__dirname + '/lib/plugins');
 
 function toMe(message) {
