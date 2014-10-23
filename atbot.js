@@ -25,21 +25,21 @@ var bot = new irc.Client(config.server, config.name, {
 });
 
 /*
- * PLUGINS
- */
-loadPlugins(bot, config.pluginDir, function(err, pluginList) {
-  if (err) {
-    return debug('loadPlugins', 'err:', err);
-  } else {
-    plugins = pluginList; // Save plugins to plugins variable
-    return debug('loadPlugins', 'plugins:', pluginList.length);
-  }
-});
-
-/*
  * EMITTERS
  */
 bot.addListener('join', function(channel, user) {
+  /*
+   * PLUGINS
+   */
+  loadPlugins(bot, config.pluginDir, function(err, pluginList) {
+    if (err) {
+      return debug('loadPlugins', 'err:', err);
+    } else {
+      plugins = pluginList; // Save plugins to plugins variable
+      return debug('loadPlugins', 'plugins:', pluginList.length);
+    }
+  });
+
   debug('join', user, 'joined.');
   bot.emit('atbot:join', user, channel);
 });
