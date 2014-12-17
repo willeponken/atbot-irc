@@ -1,7 +1,6 @@
 var Cleverbot = require('cleverbot-node'),
     CBot = new Cleverbot,
-    debug = require('debug')('atbot:plugin:hello'),
-    tools = require(__dirname + '/../lib/tools'),
+    debug = require('debug')('atbot:plugin:cleverbot'),
     ent = require('ent');
 
 cleverbot = {
@@ -9,16 +8,20 @@ cleverbot = {
   author: 'William Wennerström',
   command: 'clever',
   description: 'Talk to the cleverbot!',
-  module: function(bot, info) {
-    
+  module: function(bot, config, tools) {
+   
     bot.addListener('pm', function(from, message) {
       debug('pm', 'recieved');
-      
       debug(from, message);
+      debug('message', message, 'resstr', config.resStr);
 
-      CBot.write(message, function(resp) {
-        bot.say(from, ent.decode(resp.message));
-      });
+      if(config.resStr.indexOf(message)) {
+        debug('probably not for cleverbot');
+      } else {
+        CBot.write(message, function(resp) {
+          bot.say(from, ent.decode(resp.message));
+        });
+      }
     });
 
 

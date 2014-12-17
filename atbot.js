@@ -28,7 +28,8 @@ var bot = new irc.Client(config.server, config.name, {
 /*
  * PLUGINS
  */
-loadPlugins(bot, config.pluginDir, function(err, pluginList) {
+var Tools = new tools(config);
+loadPlugins(bot, config, config.pluginDir, Tools, function(err, pluginList) {
   if (err) {
     return debug('loadPlugins', 'err:', err);
   } else {

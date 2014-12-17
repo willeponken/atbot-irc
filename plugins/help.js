@@ -1,12 +1,11 @@
-var debug = require('debug')('atbot:plugin:help'),
-    tools = require(__dirname + '/../lib/tools');
+var debug = require('debug')('atbot:plugin:help');
 
 help = {
   name: 'help',
   author: 'William Wennerström',
   command: 'help',
   description: 'Give a list of all the available plugins',
-  module: function(bot, info) {
+  module: function(bot, info, tools) {
 
     bot.addListener('atbot:message', function(info) {
       debug('atbot:message recieved');

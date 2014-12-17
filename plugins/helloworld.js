@@ -1,12 +1,11 @@
-var debug = require('debug')('atbot:plugin:hello'),
-    tools = require(__dirname + '/../lib/tools');
+var debug = require('debug')('atbot:plugin:hello');
 
 helloworld = {
   name: 'helloworld',
   author: 'William Wennerström',
   command: 'hello',
   description: 'Answers the user with a greeting',
-  module: function(bot, info) {
+  module: function(bot, info, tools) {
 
     function greetMsg(user) {
       var greetings = [
