@@ -94,7 +94,6 @@ schoolsoft = {
               var item, date;
               var len = MAXITEMS < items.length ? MAXITEMS : items.length;
 
-              debug('items', items);
               for(var i = 0; i < len; i++) {
                 date = moment(items[i].getDate()).format('MMM Do YY, H:mm');
                 title = items[i].getTitle();

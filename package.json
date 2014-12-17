@@ -27,7 +27,11 @@
     "irc": "^0.3.7",
     "irc-colors": "^1.1.0",
     "moment": "^2.8.4",
-    "nodepie": "^0.6.5"
+    "nodepie": "^0.6.5",
+    "fbgraph": "^0.3.0",
+    "irc": "^0.3.7",
+    "request": "^2.45.0",
+    "ent": "~2.0.0"
   },
   "devDependencies": {
     "mocha": "^1.21.5"

@@ -3,7 +3,7 @@ var irc = require('irc'),
     debug  = require('debug')('atbot'),
     util = require('util'),
     tools = require(__dirname + '/lib/tools'),
-    plugins;
+    plugins,
     loadPlugins = require(__dirname + '/lib/plugins');
 
 function toMe(message) {
@@ -25,23 +25,23 @@ var bot = new irc.Client(config.server, config.name, {
   channels: config.channels
 });
 
-/*
- * PLUGINS
- */
 var Tools = new tools(config);
-loadPlugins(bot, config, config.pluginDir, Tools, function(err, pluginList) {
-  if (err) {
-    return debug('loadPlugins', 'err:', err);
-  } else {
-    plugins = pluginList; // Save plugins to plugins variable
-    return debug('loadPlugins', 'plugins:', pluginList.length);
-  }
-});
-
 /*
  * EMITTERS
  */
 bot.addListener('join', function(channel, user) {
+  /*
+   * PLUGINS
+   */
+  loadPlugins(bot, config, config.pluginDir, Tools, function(err, pluginList) {
+    if (err) {
+      return debug('loadPlugins', 'err:', err);
+    } else {
+      plugins = pluginList; // Save plugins to plugins variable
+      return debug('loadPlugins', 'plugins:', pluginList.length);
+    }
+  });
+
   debug('join', user, 'joined.');
   bot.emit('atbot:join', user, channel);
 });
@@ -51,7 +51,7 @@ bot.addListener('error', function(err) {
   bot.emit('atbot:error', err);
 });
 
-bot.addListener('message', function(from, to, message) {
+bot.addListener('message', function(from, to, message, raw) {
   debug('message', from, to, message);
   if (toMe(message)) {
     respondMsg({
@@ -59,7 +59,8 @@ bot.addListener('message', function(from, to, message) {
       channel: to,
       message: message,
       plugins: plugins,
-      config: config
+      config: config,
+      raw: raw
     });
     return;
   }
